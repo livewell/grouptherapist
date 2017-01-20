@@ -23,8 +23,8 @@ function respond() {
 function postMessage() {
   var botResponse, options, body, botReq;
 
-  botResponse = cool();
-
+  botResponse = "whatup lil nigga";
+  //cool()
   options = {
     hostname: 'api.groupme.com',
     path: '/v3/bots/post',
@@ -36,7 +36,7 @@ function postMessage() {
     "text" : botResponse
   };
 
-  console.log('sending ' + botResponse + ' to ' + botID + "whatup lil nigga");
+  console.log('sending ' + botResponse + ' to ' + botID);
 
   botReq = HTTPS.request(options, function(res) {
       if(res.statusCode == 202) {
