@@ -7,7 +7,7 @@ var botID = process.env.BOT_ID;
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
-      botRegex = /^\/cool guy$/;
+      botRegex = /^\/roll$/;
 
   if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
@@ -23,8 +23,9 @@ function respond() {
 function postMessage() {
   var botResponse, options, body, botReq;
 
-  botResponse = "whatup lil nigga";
+  botResponse = diceRoll();
   //cool()
+
   options = {
     hostname: 'api.groupme.com',
     path: '/v3/bots/post',
@@ -55,5 +56,11 @@ function postMessage() {
   botReq.end(JSON.stringify(body));
 }
 
+/**
+ * Returns a random number from 1-6
+ */
+function diceRoll(){
+  return Math.floor((Math.random() * 6) + 1);
+}
 
 exports.respond = respond;
