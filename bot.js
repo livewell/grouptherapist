@@ -23,7 +23,7 @@ function respond() {
 function postMessage() {
   var botResponse, options, body, botReq;
 
-  botResponse = diceRoll();
+  botResponse = 
   //cool()
 
   options = {
@@ -60,7 +60,7 @@ function postMessage() {
  * Returns a random number from 1-6
  */
 function diceRoll(){
-  return "2";
+  return (Math.floor((Math.random() * 6) + 1)).toString();
 }
 
 exports.respond = respond;
