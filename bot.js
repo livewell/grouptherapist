@@ -7,7 +7,7 @@ var botID = process.env.BOT_ID;
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
-      botRegex = /^\/rolld6$/;
+      botRegex = /^\/roll$/;
 
   if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
@@ -60,7 +60,7 @@ function postMessage() {
  * Returns a random number from 1-6
  */
 function diceRoll(){
-  return (Math.floor((Math.random() * 6) + 1)).toString();
+  return (Math.floor((Math.random() * 100) + 1)).toString();
 }
 
 exports.respond = respond;
