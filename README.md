@@ -1,6 +1,6 @@
 # GroupMe NodeJS Callback Bot 
 
-## Introduction
+## Overview
 
 GroupMe bot written in NodeJS, capable of responding to basic function calls ie. /roll, /weather, /food etc.
 
