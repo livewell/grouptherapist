@@ -6,13 +6,15 @@ var cool = require('cool-ascii-faces');
 var botID = process.env.BOT_ID;
 
 function respond() {
-  var request = JSON.parse(this.req.chunks[0]),
-      botRegex = /^\/roll$/;
+  var request = JSON.parse(this.req.chunks[0]);
+  var botRegex = /^\/roll$/;
 
   if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
-    postMessage();
+    postMessage(diceRoll());
     this.res.end();
+
+
   } else {
     console.log("don't care");
     this.res.writeHead(200);
@@ -20,11 +22,11 @@ function respond() {
   }
 }
 
-function postMessage() {
+function postMessage(answer) {
   var botResponse, options, body, botReq;
 
-  botResponse = diceRoll();
-  //cool()
+  //set botresponse based on given / command
+  botResponse = answer;
 
   options = {
     hostname: 'api.groupme.com',
@@ -57,7 +59,7 @@ function postMessage() {
 }
 
 /**
- * Returns a random number from 1-6
+ * Returns a random number from 1-00
  */
 function diceRoll(){
   return (Math.floor((Math.random() * 100) + 1)).toString();
