@@ -23,7 +23,7 @@ function respond() {
 function postMessage() {
   var botResponse, options, body, botReq;
 
-  botResponse = "testing roll";
+  botResponse = diceRoll();
   //cool()
 
   options = {
