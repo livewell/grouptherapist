@@ -9,30 +9,13 @@ function respond() {
   var request = JSON.parse(this.req.chunks[0]);
   var rollRegex = /^\/roll$/;
   var coinRegex =  /^\/coinflip$/;
+  
+  var isRoll = rollRegex.test(request.text);
+  var isCoinfilp = coinRegex.test(request.text);
 
-  //roll
-  if(request.text && rollRegex.test(request.text)) {
-    this.res.writeHead(200);
-    postMessage(roll());
-    this.res.end();
-
-  } else {
-    console.log("don't care");
-    this.res.writeHead(200);
-    this.res.end();
-  }
-
-  //Coinflip
-  if(request.text && coinRegex.test(request.text)) {
-    this.res.writeHead(200);
-    postMessage(coinflip());
-    this.res.end();
-
-  } else {
-    console.log("don't care");
-    this.res.writeHead(200);
-    this.res.end();
-  }
+  findResponse(request, isRoll, roll());
+  findResponse(request, isCoinflip, coinflip());
+  
 }
 
 function postMessage(answer) {
@@ -94,7 +77,7 @@ function coinflip(){
  * Match respond with given command to find proper answer
  */
 function findResponse(request, botRegex, answer){
-  if(request.text && botRegex.test(request.text)) {
+  if(request.text && botRegex) {
     this.res.writeHead(200);
     postMessage(answer);
     this.res.end();
