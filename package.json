@@ -1,6 +1,6 @@
 {
   "name": "GroupTherapist",
-  "version": "0.1",
+  "version": "0.1.1",
   "description": "GroupMe bot that can support multiple commands",
   "main": "index.js",
   "scripts": {
