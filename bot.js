@@ -26,7 +26,7 @@ function postMessage(answer) {
   var botResponse, options, body, botReq;
 
   //set botresponse based on given / command
-  botResponse =  "test";
+  botResponse = answer;
 
   options = {
     hostname: 'api.groupme.com',
