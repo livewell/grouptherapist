@@ -60,7 +60,7 @@ function postMessage() {
  * Returns a random number from 1-6
  */
 function diceRoll(){
-  return Math.floor((Math.random() * 6) + 1);
+  return console.log(Math.floor((Math.random() * 6) + 1));
 }
 
 exports.respond = respond;
