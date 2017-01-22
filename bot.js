@@ -7,13 +7,26 @@ var botID = process.env.BOT_ID;
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]);
-  var botRegex = /^\/roll$/;
+  var rollRegex = /^\/roll$/;
+  var coinRegex =  /^\/coinflip$/;
 
-  if(request.text && botRegex.test(request.text)) {
+  //roll
+  if(request.text && rollRegex.test(request.text)) {
     this.res.writeHead(200);
-    postMessage(diceRoll());
+    postMessage(roll());
     this.res.end();
 
+  } else {
+    console.log("don't care");
+    this.res.writeHead(200);
+    this.res.end();
+  }
+
+  //Coinflip
+  if(request.text && coinRegex.test(request.text)) {
+    this.res.writeHead(200);
+    postMessage(coinflip());
+    this.res.end();
 
   } else {
     console.log("don't care");
@@ -58,11 +71,38 @@ function postMessage(answer) {
   botReq.end(JSON.stringify(body));
 }
 
+//----------------Logic for Commands-------------------------//
+
 /**
- * Returns a random number from 1-00
+ * Returns a random number from 1-100
  */
-function diceRoll(){
+function roll(){
   return (Math.floor((Math.random() * 100) + 1)).toString();
 }
 
+/**
+ * Returns heads or tails
+ */
+function coinflip(){
+  if ((Math.floor((Math.random() * 2) + 1) === 2)){
+    return "Heads";
+  }
+  else return "Tails";
+}
+
+/**
+ * Match respond with given command to find proper answer
+ */
+function findResponse(request, botRegex, answer){
+  if(request.text && botRegex.test(request.text)) {
+    this.res.writeHead(200);
+    postMessage(answer);
+    this.res.end();
+
+  } else {
+    console.log("don't care");
+    this.res.writeHead(200);
+    this.res.end();
+  }
+}
 exports.respond = respond;
