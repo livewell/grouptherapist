@@ -36,6 +36,8 @@ function respond() {
 
 if (request.text){
   findResponse(request, rollRegex, roll());
+  postMessage("broken");
+  console.log("broken");
 }
 else{
   postMessage("broken");
