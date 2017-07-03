@@ -43,7 +43,7 @@ function respond() {
       break;
     default:
       this.res.writeHead(200);
-      postMessage(coinflip());
+      postMessage("broken");
       this.res.end();
       break;
   }
