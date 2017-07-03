@@ -45,6 +45,7 @@ function respond() {
       this.res.writeHead(200);
       postMessage("broken");
       postMessage(request.text);
+      postMessage(coinRegex.test(request.text));
       this.res.end();
       break;
   }
