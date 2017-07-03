@@ -10,7 +10,8 @@ function respond() {
   var rollRegex = /^\/roll$/;
   var coinRegex = /^\/coinflip$/;
 
-  /**roll
+
+  //roll
   if(request.text && rollRegex.test(request.text)) {
     this.res.writeHead(200);
     postMessage(roll());
@@ -32,22 +33,6 @@ function respond() {
     console.log("don't care");
     this.res.writeHead(200);
     this.res.end();
-  }
-*/
-
-  switch (request.text) {
-    case request.text && coinRegex.test(request.text):
-      this.res.writeHead(200);
-      postMessage(coinflip());
-      this.res.end();
-      break;
-    default:
-      this.res.writeHead(200);
-      postMessage("broken");
-      postMessage(request.text);
-      postMessage(coinRegex.test(request.text));
-      this.res.end();
-      break;
   }
 
 
