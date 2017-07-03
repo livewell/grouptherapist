@@ -36,9 +36,10 @@ function respond() {
 
     switch (true) {
       case request.text && coinRegex.test(request.text):
-        this.res.writeHead(200);
-        postMessage(coinflip());
-        this.res.end();
+        answer(coinflip());
+        break;
+      case request.text && rollRegex.test(request.text):
+        answer(roll());
         break;
       default:
         this.res.writeHead(200);
@@ -46,7 +47,6 @@ function respond() {
         this.res.end();
         break;
     }
-  
 
 }
 
@@ -106,18 +106,13 @@ function coinflip() {
 }
 
 /**
- * Match respond with given command to find proper answer
+ * answers based on given input
  */
-function findResponse(request, botRegex, answer) {
-  if (request.text && botRegex.test(request.text)) {
-    this.res.writeHead(200);
-    postMessage(answer);
-    this.res.end();
-
-  } else {
-    console.log("don't care");
-    this.res.writeHead(200);
-    this.res.end();
-  }
+function answer(input) {
+  this.res.writeHead(200);
+  postMessage(input);
+  this.res.end();
 }
+
+
 exports.respond = respond;
