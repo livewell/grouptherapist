@@ -34,7 +34,7 @@ function respond() {
   }
 */
 
-if (rollRegex.test(request.text)){
+if (request.text){
   findResponse(request, rollRegex, roll());
 }
 else{
