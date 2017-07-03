@@ -36,7 +36,9 @@ function respond() {
 
     switch (true) {
       case request.text && coinRegex.test(request.text):
+        this.res.writeHead(200);
         answer(coinflip());
+        this.res.end();
         break;
       case request.text && rollRegex.test(request.text):
         answer(roll());
@@ -109,9 +111,7 @@ function coinflip() {
  * answers based on given input
  */
 function answer(input) {
-  this.res.writeHead(200);
   postMessage(input);
-  this.res.end();
 }
 
 
