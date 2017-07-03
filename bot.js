@@ -34,33 +34,35 @@ function respond() {
   }
 */
 
-if (request.text && rollRegex.test(request.text)){
-   this.res.writeHead(200);
+  if (request.text && rollRegex.test(request.text)) {
+    this.res.writeHead(200);
     postMessage(roll());
     this.res.end();
-}
-else{
-  postMessage("broken");
-  console.log("broken");
-}
-
-/* 
-  switch (true) {
-    case request.text && coinRegex.test(request.text):
-      this.res.writeHead(200);
-      postMessage(coinflip());
-      this.res.end();
-      break;
-    default:
-      this.res.writeHead(200);
-      postMessage("broken");
-      postMessage(request.text);
-      postMessage(coinRegex.test(request.text));
-      this.res.end();
-      break;
+  }
+  else {
+    this.res.writeHead(200);
+    postMessage("broken");
+    console.log("broken");
+    this.res.end();
   }
 
-*/
+  /* 
+    switch (true) {
+      case request.text && coinRegex.test(request.text):
+        this.res.writeHead(200);
+        postMessage(coinflip());
+        this.res.end();
+        break;
+      default:
+        this.res.writeHead(200);
+        postMessage("broken");
+        postMessage(request.text);
+        postMessage(coinRegex.test(request.text));
+        this.res.end();
+        break;
+    }
+  
+  */
 }
 
 function postMessage(answer) {
