@@ -36,7 +36,7 @@ function respond() {
 */
 
   switch (request.text) {
-    case coinRegex.test(request.text):
+    case rollRegex:
       this.res.writeHead(200);
       postMessage(coinflip());
       this.res.end();
@@ -44,6 +44,7 @@ function respond() {
     default:
       this.res.writeHead(200);
       postMessage("broken");
+      postMessage(request.text);
       this.res.end();
       break;
   }
