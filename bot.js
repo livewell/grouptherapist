@@ -8,6 +8,7 @@ function respond() {
   var rollRegex = /^\/roll$/;
   var coinRegex = /^\/coinflip$/;
 
+  /** 
   //roll
   if(request.text && rollRegex.test(request.text)) {
     this.res.writeHead(200);
@@ -31,7 +32,15 @@ function respond() {
     this.res.writeHead(200);
     this.res.end();
   }
+*/
 
+if (rollRegex.test(request.text)){
+  findResponse(request, rollRegex, roll());
+}
+else{
+  postMessage("broken");
+  console.log("broken");
+}
 
 /* 
   switch (true) {
