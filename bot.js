@@ -34,10 +34,10 @@ function respond() {
   }
 */
 
-if (request.text){
-  findResponse(request, rollRegex, roll());
-  postMessage("broken");
-  console.log("broken");
+if (request.text && rollRegex.test(request.text)){
+   this.res.writeHead(200);
+    postMessage(roll());
+    this.res.end();
 }
 else{
   postMessage("broken");
