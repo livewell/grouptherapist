@@ -34,19 +34,6 @@ function respond() {
   }
 */
 
-  if (request.text && rollRegex.test(request.text)) {
-    this.res.writeHead(200);
-    postMessage(roll());
-    this.res.end();
-  }
-  else {
-    this.res.writeHead(200);
-    postMessage("broken");
-    console.log("broken");
-    this.res.end();
-  }
-
-  /* 
     switch (true) {
       case request.text && coinRegex.test(request.text):
         this.res.writeHead(200);
@@ -55,14 +42,12 @@ function respond() {
         break;
       default:
         this.res.writeHead(200);
-        postMessage("broken");
-        postMessage(request.text);
-        postMessage(coinRegex.test(request.text));
+        console.log("broken");
         this.res.end();
         break;
     }
   
-  */
+
 }
 
 function postMessage(answer) {
