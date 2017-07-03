@@ -36,7 +36,7 @@ function respond() {
 */
 
   switch (request.text) {
-    case rollRegex:
+    case request.text && coinRegex.test(request.text):
       this.res.writeHead(200);
       postMessage(coinflip());
       this.res.end();
