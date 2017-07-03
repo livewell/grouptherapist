@@ -42,10 +42,13 @@ function respond() {
       this.res.end();
       break;
     default:
+      this.res.writeHead(200);
+      postMessage(coinflip());
+      this.res.end();
       break;
   }
 
-  
+
 }
 
 function postMessage(answer) {
