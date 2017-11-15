@@ -6,12 +6,14 @@ GroupMe bot written in NodeJS, capable of responding to basic function calls ie.
 
 ## Commands
 
-  * Add /roll functionality (return random 1-100 integer)
-  * 
+  * /roll ; return random 1-100 integer
+  * /coinflip ; return heads or tails
 
 ## ToDO
 
-  * Add /rolld10 functionality (return random D10 integer)
-  * Add /weather functionality (return current weather for the week in SJ)
+  * Add /weather functionality (return current weather for the week)
+  * Add /sports functionality (return scores for given sport)
+  * Add /crypto functionality (return current price of coins)
   * Add /food functionality (return food recommendations from yelp)
+  * Add /reddit functionality (return top reddit posts)
 
