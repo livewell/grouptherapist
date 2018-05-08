@@ -1,6 +1,9 @@
 var HTTPS = require('https');
 var cool = require('cool-ascii-faces');
 
+const geocode = require('./weather/geocode.js');
+const weather = require('./weather/weather.js');
+
 var botID = process.env.BOT_ID;
 
 function respond() {
