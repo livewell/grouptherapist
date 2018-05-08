@@ -7,6 +7,7 @@ function respond() {
   var request = JSON.parse(this.req.chunks[0]);
   var rollRegex = /^\/roll$/;
   var coinRegex = /^\/coinflip$/;
+  var weather = /^\/weather$/;
 
   switch (true) {
     case request.text && coinRegex.test(request.text):
@@ -16,6 +17,9 @@ function respond() {
       break;
     case request.text && rollRegex.test(request.text):
       answer(roll());
+      break;
+    case request.text && weatherRegex.test(request.text):
+      answer(weather());
       break;
     default:
       this.res.writeHead(200);
@@ -101,5 +105,22 @@ function answer(input) {
   postMessage(input);
 }
 
+function weather() {
+  geocode.geocodeAddress('95121', function (errorMessage, results) {
+    if (errorMessage) {
+      console.log(errorMessage);
+    }
+
+    console.log(results.address)
+
+    weather.getWeather(results.latitude, results.longitude, function (errorMessage, weatherResults) {
+      if (errorMessage) {
+        console.log(errorMessage);
+      }
+
+      console.log(`It is currently : ${weatherResults.temperature}. It feels like ${weatherResults.apparentTemperature}.`);
+    });
+  });
+}
 
 exports.respond = respond;
